@@ -16,15 +16,15 @@ app.get('/', function(req, res) {
 
 app.use(require('./routes/usuarios'));
 
-    //mongoose.connect('mongodb://localhost:27017/cafeteria', {
-        //useNewUrlParser: true,
-        //useCreateIndex: true,
-        //useUnifiedTopology: true,
-        //useFindAndModify: false
-    //}, (err, res) => {
-      //  if (err) throw err;
-        //console.log('Base de datos ONLINE');
-    //});
+    mongoose.connect('mongodb://localhost:27017/cafeteria', {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+    }, (err, res) => {
+        if (err) throw err;
+        console.log('Base de datos ONLINE');
+    });
 
 
 app.listen(process.env.PORT, () => {
