@@ -55,7 +55,7 @@ app.post('/categoria', (req, res) =>{
 
     app.put('/categoria/:id', function(req, res) {
         let id = req.params.id;
-        let body = _.pick(req.body, ['descripcion']);
+        let body = _.pick(req.body, ['descripcion', 'usuario']);
     
         Categoria.findByIdAndUpdate(id, body, 
         { new: true, runValidators: true, context: 'query' },
@@ -78,12 +78,12 @@ app.post('/categoria', (req, res) =>{
     app.delete('/categoria/:id', function(req, res) {
         let id = req.params.id;
      
-        Categoria.findByIdAndUpdate(id, { descripcion: true }, { new: true, runValidators: true, context: 'query'}, (err, catDB) => {
+        Categoria.findByIdAndUpdate(id, { context: 'query'}, (err, catDB) => {
                
                if (err) {
                        return res.status(400).json({
                                ok: false,
-                                 msj: 'Ocurrio un error al momento de eliminar',
+                                msj: 'Ocurrio un error al momento de eliminar',
                                  err
                            });
                          }
