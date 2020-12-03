@@ -12,7 +12,7 @@ app.get('/', function(req, res) {
     res.send('<h1>Bienvenido a mi servidor REST</h1>');
 });
      
-
+app.use(require('./routes/producto'));
 app.use(require('./routes/categoria'));
 app.use(require('./routes/usuarios'));
 
