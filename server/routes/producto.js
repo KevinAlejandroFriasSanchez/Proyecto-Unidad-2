@@ -62,7 +62,7 @@ app.put('/producto/:id', function(req, res) {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre','precioUni']);
 
-    Producto.findByIdAndUpdate(id,{ context: 'query' },(err, proDB) => { 
+    Producto.findByIdAndUpdate(id,body,{ context: 'query' },(err, proDB) => { 
         if(err) {
             return res.status(400).json({
                 ok: false,
@@ -81,7 +81,7 @@ app.put('/producto/:id', function(req, res) {
 app.delete('/producto/:id', function(req, res) {
     let id = req.params.id;
  
-    Producto.findByIdAndUpdate(id, { disponible:true }, { new: true, runValidators: true, context: 'query'}, (err, proDB) => {
+    Producto.findByIdAndUpdate(id, { context: 'query'}, (err, proDB) => {
            
            if (err) {
                    return res.status(400).json({
